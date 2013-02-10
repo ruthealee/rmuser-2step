@@ -34,6 +34,10 @@ Q. Why do we need a script for this?
 
 A. For one user, on one machine, you dont. This is useful for cases when a customer wants 5 users deleted, or users being deleted across 20 servers (or both). Note: It's still handy to use these scripts anyway, as it enforces best practice.
 
+Q. Why is there a separate script for RHEL4 servers?
+
+A. A different version of passwd, with a different output that I'm awking. That whole part of the script could be done better to accomodate both outputs, but we have about 5 RHEL4 servers left in the company so I don't really see it as a requirement. Always accepting patches and pull requests though :)
+
 Q. Why on earth are you deleting files? We're only meant to be deleting users!
 
 A. When a user is deleted it leaves the ownership in limbo - and we shouldn't be letting this happen. You should use the handy list from the first script to reassign the files to new owners where necessary, but it's likely there are always 4-5 files that can just be ignored and deleted ('.bash_history' for example). Use your best judgement when running the second script, informed by the data coming out of the first one.
