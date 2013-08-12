@@ -16,7 +16,6 @@ Here's some features:
 - Handy list of user-owned files to tidy up at your (and the customers') leisure
 - When a user is deleted, so are all the files it owns (Yes! This is actually a feature!)
 - Works efficiently with multiple users and scales well
-- Works great with HammerTime!
 
 Here's a slightly more in-depth version of events. However, I recommend reading the scripts anyway so you understand fully what's happening:
 
@@ -32,15 +31,15 @@ FAQ
 
 Q. Why do we need a script for this?
 
-A. For one user, on one machine, you dont. This is useful for cases when a customer wants 5 users deleted, or users being deleted across 20 servers (or both). Note: It's still handy to use these scripts anyway, as it enforces best practice.
+A. For one user, on one machine, you dont. This is useful for cases when you want 5 users deleted, or users being deleted across 20 servers (or both). Note: It's still handy to use these scripts anyway, as it enforces best practice.
 
 Q. Why is there a separate script for RHEL4 servers?
 
-A. A different version of passwd, with a different output that I'm awking. That whole part of the script could be done better to accomodate both outputs, but we have about 5 RHEL4 servers left in the company so I don't really see it as a requirement. Always accepting patches and pull requests though :)
+A. A different version of passwd, with a different output that I'm awking. That whole part of the script could be done better to accomodate both outputs, but RHEL4 is very old now so I don't really see it as a requirement. Always accepting patches and pull requests though :)
 
 Q. Why on earth are you deleting files? We're only meant to be deleting users!
 
-A. When a user is deleted it leaves the ownership in limbo - and we shouldn't be letting this happen. You should use the handy list from the first script to reassign the files to new owners where necessary, but it's likely there are always 4-5 files that can just be ignored and deleted ('.bash_history' for example). Use your best judgement when running the second script, informed by the data coming out of the first one.
+A. When a user is deleted it leaves the ownership in limbo - and you shouldn't be letting this happen. You should use the handy list from the first script to reassign the files to new owners where necessary, but it's likely there are always 4-5 files that can just be ignored and deleted ('.bash_history' for example). Use your best judgement when running the second script, informed by the data coming out of the first one.
 
 Q. Why lock a user first? What's wrong with a one-step process?
 
@@ -52,7 +51,7 @@ A. That's not a question, but COME ON! There's a comment on NEARLY EVERY LINE! I
 
 Q. I see a mistake/I've found a bug/you're doing it wrong.
 
-A. Again, not questions, but there's an issue tracker on this project. Submit an issue and I'll try to get it fixed. I also accept pull requests, so if you know what's wrong I'd really appreciate it if you just fixed it yourself and pushed it upstream :) (if you don't know how this works, now is a great time to learn! It'll make you a better SysAdmin, I promise!)
+A. There's an issue tracker on this project. Submit an issue and I'll try to get it fixed. I also accept pull requests, so if you know what's wrong I'd really appreciate it if you just fixed it yourself and pushed it upstream :) (if you don't know how this works, now is a great time to learn! It'll make you a better Sysadmin, I promise!)
 
 Q. I ran your script and you destroyed a customer's server!
 
