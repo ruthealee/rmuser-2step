@@ -26,3 +26,7 @@ if [ -z "$string" ]; # check to see if $string is empty
         else find / $string -exec rm -rf {} \; 2>/dev/null; # delete every file owned by each user that existed and was locked, route errors to /dev/null for tidiness
 	for i in $deathrow; do userdel $i; done; # delete every user that existed and was locked
 fi;
+for user in $@; do #loop through every argument, again
+	rm -rf $user.lockedandsearched #remove the lockfile
+done #end of for loop
+
