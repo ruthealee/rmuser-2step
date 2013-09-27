@@ -18,6 +18,6 @@ done; # end of for loop
 string=${string#???}; # delete the first three characters from $string - the ' -o', because it's easier than not adding it in the first place and it breaks find
 if [ -z "$string" ]; # check to see if $string is empty
 	then echo "None of these users exist on this server - find will not be executed"; # if the string *is* empty we'll not take any further action
-	else find / $string -exec rm -rf {} \\\; 2>/dev/null; # delete every file owned by each user that existed and was locked, route errors to /dev/null for tidiness
+	else find / $string -exec rm -rf {} \; 2>/dev/null; # delete every file owned by each user that existed and was locked, route errors to /dev/null for tidiness
 	for i in $deathrow; do userdel $i; done; # delete every user that existed and was locked
 fi;
