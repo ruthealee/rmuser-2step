@@ -17,3 +17,6 @@ if [ -z "$string" ]; # check to see if $string is empty
 	then echo "None of these users exist on this server - find will not be executed"; # if the string *is* empty we'll not take any further action
 	else find / $string 2>/dev/null; # list every file owned by each user that existed, route errors to /dev/null for tidiness
 fi;
+for user in $@; do #loop through every argument, again
+	touch $user.lockedandsearched #this file is a simple safeguard - if the find didn't complete, the file won't be created and the second search won't work!
+done #end of for loop
