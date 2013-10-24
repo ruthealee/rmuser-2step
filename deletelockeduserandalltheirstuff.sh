@@ -2,12 +2,14 @@
 #This script will delete all files owned by a user
 #and then delete the user. It won't delete a user 
 #unless the account is locked. Use with caution!
-for user in $@; # loop through each argument given
-	if [! -f $user.lockedandsearched ] # 'if file doesn't exist' - we're checking to see if the previous script completed successfully
-		echo "Lock file for $user doesn't exist - exiting"; # print a relevant error message
-		exit 255; # and kill the script early, with a non-zero error code
-	fi
-done
+
+# Broken lockfile code
+#for user in $@; do # loop through each argument given
+#	if [ ! -f $user.lockedandsearched ]; then # 'if file doesn't exist' - we're checking to see if the previous script completed successfully
+#		echo "Lock file for $user doesn't exist - exiting"; # print a relevant error message
+#		exit 255; # and kill the script early, with a non-zero error code
+#	fi
+#done
 for user in $@; # loop through each argument given
 do 
 	if id $user >/dev/null 2>&1; # 'if user exists' - I'm sending all stderr and stdout to /dev/null for tidiness
@@ -26,7 +28,7 @@ if [ -z "$string" ]; # check to see if $string is empty
         else find / $string -exec rm -rf {} \; 2>/dev/null; # delete every file owned by each user that existed and was locked, route errors to /dev/null for tidiness
 	for i in $deathrow; do userdel $i; done; # delete every user that existed and was locked
 fi;
-for user in $@; do #loop through every argument, again
-	rm -rf $user.lockedandsearched #remove the lockfile
-done #end of for loop
+#for user in $@; do #loop through every argument, again
+#	rm -rf $user.lockedandsearched #remove the lockfile
+#done #end of for loop
 
